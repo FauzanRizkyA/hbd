@@ -105,6 +105,13 @@
             transform: scale(1.1);
         }
 
+       .page img {
+    display: none;
+    position: absolute;
+    /* visibility: hidden; */
+}
+
+
         
     </style>
 </head>
@@ -118,7 +125,7 @@
     <!-- Pages -->
     <div class="page" id="page1">
         <h1 id="text1"></h1>
-        <button class="btn" id="btn1" onclick="nextPage(1)">
+        <button class="btn" id="btn1" onclick="nextPage(1)">Klik disini yaa...
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
          </button>
     </div>
@@ -131,63 +138,63 @@
 
     <div class="page" id="page2">
         <h1 id="text2"></h1>
-        <button class="btn" id="btn2" onclick="nextPage(2)">
+        <button class="btn" id="btn2" onclick="nextPage(2)">>>
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
         </button>
     </div>
 
     <div class="page" id="page3">
         <h1 id="text3"></h1>
-        <button class="btn" id="btn3" onclick="nextPage(3)">
+        <button class="btn" id="btn3" onclick="nextPage(3)">>>
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
         </button>
     </div>
 
     <div class="page" id="page4">
         <h1 id="text4"></h1>
-        <button class="btn" id="btn4" onclick="nextPage(4)">
+        <button class="btn" id="btn4" onclick="nextPage(4)">>>
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
         </button>
     </div>
 
     <div class="page" id="page5">
         <h1 id="text5"></h1>
-        <button class="btn" id="btn5" onclick="nextPage(5)">
+        <button class="btn" id="btn5" onclick="nextPage(5)">>>
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
         </button>
     </div>
 
     <div class="page" id="page6">
         <h1 id="text6"></h1>
-        <button class="btn" id="btn6" onclick="nextPage(6)">
+        <button class="btn" id="btn6" onclick="nextPage(6)">>>
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
         </button>
     </div>
 
     <div class="page" id="page7">
         <h1 id="text7"></h1>
-        <button class="btn" id="btn7" onclick="nextPage(7)">
+        <button class="btn" id="btn7" onclick="nextPage(7)">>>
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
         </button>
     </div>
 
     <div class="page" id="page8">
         <h1 id="text8"></h1>
-        <button class="btn" id="btn8" onclick="nextPage(8)">
+        <button class="btn" id="btn8" onclick="nextPage(8)">>>
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
         </button>
     </div>
 
     <div class="page" id="page9">
         <h1 id="text9"></h1>
-        <button class="btn" id="btn9" onclick="nextPage(9)">
+        <button class="btn" id="btn9" onclick="nextPage(9)">>>
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
         </button>
     </div>
 
     <div class="page" id="page10">
         <h1 id="text10"></h1>
-        <button class="btn" id="btn10" onclick="nextPage(10)">
+        <button class="btn" id="btn10" onclick="nextPage(10)">>>
             <img src="right.png" style="width: 20px; height: 20px; margin-right: 0px;">
         </button>
     </div>
@@ -202,7 +209,7 @@
     </div> 
 
     <div class="page" id="page11">
-        <img src="" alt="Birthday" style="width: 300px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            <img src="nisa.jpg" alt="Birthday" style="width: 300px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
         <h1 class="birthday-text" id="birthdayText">Happy Birthday!</h1>
     </div>
 
@@ -241,17 +248,31 @@
 
         function nextPage(current) {
             if (current < 11) {
-                gsap.to(`#page${current}`, {opacity: 0, duration: 0.5, onComplete: () => {
-                    document.getElementById(`page${current}`).style.display = "none";
-                    currentPage = current + 1;
-                    document.getElementById(`page${currentPage}`).style.display = "flex";
-                    gsap.to(`#page${currentPage}`, {opacity: 1, duration: 0.5, onComplete: () => {
-                        startTyping(currentPage);
-                    }});
-                }});
+
+        gsap.to(`#page${current}`, {opacity: 0, duration: 0.5, onComplete: () => {
+            document.getElementById(`page${current}`).style.display = "none";
+            currentPage = current + 1;
+            document.getElementById(`page${currentPage}`).style.display = "flex";
+            gsap.to(`#page${currentPage}`, {opacity: 1, duration: 0.5, onComplete: () => {
+                startTyping(currentPage);
+                if (currentPage === 11) {
+                    document.querySelector("#page11 img").style.display = "block";
+                }
+            }});
+        }});
+        //         gsap.to(`#page${current}`, {opacity: 0, duration: 0.5, onComplete: () => {
+        //             document.getElementById(`page${current}`).style.display = "none";
+        //             currentPage = current + 1;
+        //             document.getElementById(`page${currentPage}`).style.display = "flex";
+        //             gsap.to(`#page${currentPage}`, {opacity: 1, duration: 0.5, onComplete: () => {
+        //                 startTyping(currentPage);
+        //             }});
+        //         }});
             }
             if (current === 1) startMusic();
         }
+
+
 
         function previousPage() {
             if (currentPage > 1) {
@@ -272,16 +293,16 @@
 
         function startTyping(page) {
             const messages = {
-                1: "tes1",
-                2: "tes2",
-                3: "tes3",
-                4: "tes4",
-                5: "tes5",
-                6: "tes6",
-                7: "tes7",
-                8: "tes8",
-                9: "tes9",
-                10: "tes10",
+                1: "Hi, Ninisku Sayanggggg 🤍 ",
+                2: "Ninisku Sayanggg, Hari ini bukan hanya sekedar pergantian angka dalam hidup kamu, tapi juga hari dimana dunia menjadi lebih indah karena kehadiranmu....",
+                3: "Aku ingin kamu tahu bahwa kamu luar biasa, lebih dari yang bisa kamu bayangkan....",
+                4: "Jangan pernah meragukan betapa istimewanya kamu. Kamu adalah wanita yang kuat, penuh kasih, dan begitu berharga. Tidak ada yang bisa menggantikan sinar yang kamu bawa ke dalam hidupku dan orang-orang di sekitarmu....",
+                5: "Setiap langkah yang kamu ambil, setiap mimpi yang kamu kejar, aku ingin kamu tahu bahwa kamu mampu mencapainya. Percayalah pada dirimu sendiri, karena kamu jauh lebih hebat dari yang kamu kira.... ",
+                6: "Aku selalu ada di sini, mendukungmu, menyemangatimu, dan mencintaimu tanpa syarat....",
+                7: "Percayalah pada dirimu sendiri, karena aku percaya padamu lebih dari siapa pun. Kamu memiliki segalanya untuk bersinar, ketulusan, dan hati yang penuh cinta....",
+                8: "Jangan ganti aku dengan pria lain ya sayangg, tapi ajari aku menjadi pria terakhir yang menemani perjalanan hidup kamu....",
+                9: "Jadi hari ini, tersenyumlah lebih lebar, percaya diri lebih besar, dan jalani tahun dalam hidupmu dengan penuh keyakinan. Dunia ini beruntung memiliki kamu, dan aku lebih beruntung lagi karena bisa bersamamu lagi dan selamanya....",
+                10: "Selamat ulang tahun, Ninisku sayang🤍🤍🤍🤍 Kamu luar biasa, dan jangan pernah lupakan itu. 💖🎉 Fauzan Rizky 💖🎉",
                 11:"",
             };
 
